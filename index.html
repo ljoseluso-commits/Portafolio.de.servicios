@@ -54,6 +54,20 @@
   input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
   textarea{min-height:100px;resize:vertical}
   .muted{color:var(--muted)}
+  .lang-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:var(--accent);
+  border:none;
+  padding:8px 14px;
+  border-radius:10px;
+  font-weight:700;
+  color:#071026;
+  cursor:pointer;
+  z-index:50;
+}
+
 </style>
 </head>
 <body>
@@ -71,16 +85,17 @@
       <section>
         <div class="card hero">
           <div class="profile">
-            <h2 style="margin:0">About me</h2>
+            <h2 style="margin:0">Acerca del jugador</h2>
             <p class="muted">Soy José Luis Lozano Cárdenas, mediocampista. Me especializo en la visión de juego, precisión en el pase y creación de jugadas. En esta web encontrarás mi video de highlights, mis datos de contacto y colleges donde me he postulado.</p>
             <div class="badges">
-              <div class="badge">Position: Midfielder</div>
+              <div class="badge">Posicion: mediocampista ofensivo</div>
               <div class="badge">Skills: Vision · Passing · Playmaking</div>
-              <div class="badge">Study: Basic Programming (HTML, Java, CSS)</div>
+              <div class="badge">Estudiante de: programa basico (HTML, Java, CSS) y ingenieria industrial</div>
             </div>
+<button class="lang-btn" id="langBtn">English</button>
 
             <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-              <button class="primary" id="openVideo">Watch Highlights</button>
+              <button class="primary" id="openVideo">Ver video</button>
               <a class="ghost" href="#contactForm" style="display:inline-block;padding:8px 10px;border-radius:8px;text-decoration:none">Contact</a>
             </div>
 
@@ -103,95 +118,14 @@
           </div>
         </div>
 
-        <!-- Colleges / Contacts -->
-        <div class="card" style="margin-top:18px">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3 style="margin:0">Colleges & High Schools contact list</h3>
-            <div style="width:320px">
-              <div class="actions" style="gap:8px">
-                <input type="search" id="search" placeholder="Buscar colegio / ciudad" aria-label="Buscar">
-              </div>
-            </div>
-          </div>
-
-          <table id="contactsTable" aria-live="polite">
-            <thead>
-              <tr><th>Institution</th><th>Location</th><th>Contact</th><th>Email</th><th></th></tr>
-            </thead>
-            <tbody>
-              <!-- Ejemplos: modifica según necesites -->
-              <tr>
-                <td>Palm Beach State College</td>
-                <td>Lake Worth, FL, USA</td>
-                <td>International Admissions</td>
-                <td id="mail1">international@pbsc.edu</td>
-                <td><button class="copy-btn" onclick="copyText('international@pbsc.edu')">Copy</button></td>
-              </tr>
-              <tr>
-                <td>University of Central Florida (UCF)</td>
-                <td>Orlando, FL, USA</td>
-                <td>Soccer Dept</td>
-                <td id="mail2">soccer@athletics.ucf.edu</td>
-                <td><button class="copy-btn" onclick="copyText('soccer@athletics.ucf.edu')">Copy</button></td>
-              </tr>
-              <tr>
-                <td>Florida Atlantic University (FAU)</td>
-                <td>Boca Raton, FL, USA</td>
-                <td>Coach Joey Worthen</td>
-                <td id="mail3">worthenj@fau.edu</td>
-                <td><button class="copy-btn" onclick="copyText('worthenj@fau.edu')">Copy</button></td>
-              </tr>
-              <tr>
-                <td>Monroe College</td>
-                <td>Bronx, NY, USA</td>
-                <td>Coach Marcus DiBernardo</td>
-                <td>mdibernardo@monroecollege.edu</td>
-                <td><button class="copy-btn" onclick="copyText('mdibernardo@monroecollege.edu')">Copy</button></td>
-              </tr>
-              <tr>
-                <td>Tyler Junior College</td>
-                <td>Tyler, TX, USA</td>
-                <td>Soccer Dept</td>
-                <td>ShaunStocker@tjc.edu</td>
-                <td><button class="copy-btn" onclick="copyText('ShaunStocker@tjc.edu')">Copy</button></td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="small muted" style="margin-top:10px">Tip: si un email rebota, intenta con el correo general del athletics o admissions.</p>
-        </div>
-
-        
-
-        <!-- Contact form -->
-        <div id="contactForm" class="card" style="margin-top:18px">
-          <h3>Contact / Ready-to-send email</h3>
-          <form id="contactMe" onsubmit="handleContact(event)">
-            <div class="row">
-              <input type="text" id="name" placeholder="Your name (e.g. José Luis Lozano)" required>
-              <input type="email" id="email" placeholder="Your email" required>
-            </div>
-            <div style="margin-top:10px">
-              <input type="text" id="subject" placeholder="Subject (e.g. Soccer Recruitment Inquiry)" required>
-            </div>
-            <div style="margin-top:10px">
-              <textarea id="message" placeholder="Write your message... (will open in your email client)" required>Hi, I am José Luis Lozano Cárdenas from Bogotá, Colombia. I play as a midfielder (vision, passing, playmaking). Here is my highlight video: https://youtu.be/cv-yO-dcY5s?si=6gYlmwzGqYRuS_hI
-I would like info about recruitment and scholarship opportunities. Thanks!</textarea>
-            </div>
-            <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
-              <button type="submit" class="primary">Open email client</button>
-              <button type="button" class="ghost" onclick="clearForm()">Clear</button>
-              <span class="small muted" style="margin-left:auto">This will open your mail app (mailto)</span>
-            </div>
-          </form>
-        </div>
 
       </section>
 
       <!-- Side column -->
       <aside>
         <div class="card">
-          <h3 style="margin:0 0 8px 0">Quick Info</h3>
-          <p class="muted small">Use these quick actions to speed up outreach.</p>
+          <h3 style="margin:0 0 8px 0">Ver video youtube</h3>
+          <p class="muted small">usa el siguiente link para ver en YouTube.</p>
           <div style="display:flex;gap:8px;flex-direction:column;margin-top:10px">
             <button class="primary" onclick="openVideoModal()">Ver highlights</button>
             <button class="ghost" onclick="copyText('https://youtu.be/cv-yO-dcY5s?si=6gYlmwzGqYRuS_hI')">Copy Video Link</button>
@@ -200,11 +134,11 @@ I would like info about recruitment and scholarship opportunities. Thanks!</text
         </div>
 
         <div class="card" style="margin-top:14px">
-          <h4 style="margin:0">Stats (ejemplo)</h4>
-          <p class="small muted" style="margin-top:8px">Matches played: <strong>18</strong><br/>Goals: <strong>6</strong> • Assists: <strong>9</strong></p>
+          <h4 style="margin:0"> estadisticas del jugador </h4>
+          <p class="small muted" style="margin-top:8px">Partidos jugados: <strong>58</strong><br/>Goles: <strong>12</strong> • Assists: <strong>15</strong></p>
           <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
-          <p class="small muted">Position: Midfielder</p>
-          <p class="small muted">Languages: Spanish (native), Basic English</p>
+          <p class="small muted">Posicion: Mediocampista ofensivo</p>
+          <p class="small muted">Idiomas que habla: Español (nativo), ingles intermedio</p>
         </div>
 
         <div class="card" style="margin-top:14px">
@@ -298,6 +232,18 @@ I would like info about recruitment and scholarship opportunities. Thanks!</text
     a.click();
     URL.revokeObjectURL(a.href);
   }
+  
+  let currentLang = "es";
+currentLang = currentLang === "es" ? "en" : "es";
+document.getElementById("langBtn").addEventListener("click", () => {
+  currentLang = currentLang === "es" ? "en" : "es";
+  const t = translations[currentLang];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = t[id];
+  });
+});
+
 </script>
 </body>
 </html>
