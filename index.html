@@ -129,7 +129,7 @@
           <div style="display:flex;gap:8px;flex-direction:column;margin-top:10px">
             <button class="primary" onclick="openVideoModal()">Ver highlights</button>
             <button class="ghost" onclick="copyText('https://youtu.be/cv-yO-dcY5s?si=6gYlmwzGqYRuS_hI')">Copy Video Link</button>
-            <a class="ghost" href="#contactsTable" style="text-align:center;padding:8px">Ver contactos</a>
+          
           </div>
         </div>
 
@@ -233,16 +233,10 @@
     URL.revokeObjectURL(a.href);
   }
   
-  let currentLang = "es";
-currentLang = currentLang === "es" ? "en" : "es";
-document.getElementById("langBtn").addEventListener("click", () => {
-  currentLang = currentLang === "es" ? "en" : "es";
-  const t = translations[currentLang];
-  ids.forEach(id => {
+ 
     const el = document.getElementById(id);
     if (el) el.textContent = t[id];
-  });
-});
+  ;
 
 </script>
 </body>
